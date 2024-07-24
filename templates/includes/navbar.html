@@ -1,0 +1,172 @@
+{% load static %}
+{% load google_translate %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Website</title>
+  <!-- Add your Bootstrap CSS link here -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    #moon-icon, #sun-icon {
+      cursor: pointer;
+      width:30px;
+      margin-right: 10px;
+    }
+    .dark-mode,.dark-mode a,.dark-mode p,.dark-mode h1,.dark-mode h3,.dark-mode h5,.dark-mode div,.dark-mode form,.dark-mode section,.dark-mode header {
+    background-color:#2c3e50;
+    color: #dddddd;
+  }
+
+  .dark-mode .navbar-nav .nav-link,
+  .dark-mode .widget-header .title,
+  .dark-mode .widget-header .widget-header a {
+    color: #dddddd !important;
+  }
+  </style>
+</head>
+<body>
+<header class="section-header">
+  <nav class="navbar p-md-0 navbar-expand-sm navbar-light border-bottom">
+    <div class="container">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarTop4"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTop4">
+        <ul class="navbar-nav mr-auto">
+          
+          <li class="nav-item dropdown">
+            {% google_translate type='vertical' language='en' %}
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li>
+            <a href="mailto:nishantkumarfps123@gmail.com" class="nav-link">
+              <i class="fa fa-envelope"></i> Email
+            </a>
+          </li>
+          <li>
+            <a href='{% url "contact" %}' class="nav-link">
+              <i class="fa fa-phone"></i> Contact Us
+            </a>
+          </li>
+          <li id="theme-icons">
+            <img src="{% static "images/avatars/moon.png" %}" alt="Theme" id="moon-icon">
+            <img src="{% static "images/avatars/sun.png" %}" alt="Theme" id="sun-icon">
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="header-main border-bottom">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-2 col-md-3 col-6">
+          <a href='{% url "home" %}' class="brand-wrap">
+            <img class="logo" src="{% static 'images/logo.png' %}" />
+          </a>
+        </div>
+        <div class="col-lg col-sm col-md col-6 flex-grow-0">
+          <div class="category-wrap dropdown d-inline-block float-right">
+            <button
+              type="button"
+              class="btn btn-primary dropdown-toggle"
+              data-toggle="dropdown"
+            >
+              <i class="fa fa-bars"></i> All category
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{% url 'store' %}">All Products</a>
+              {% for category in links %}
+              <a class="dropdown-item" href="{{ category.get_url }}">{{ category.category_name }}</a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <a href='{% url "store" %}' class="btn btn-outline-primary">Store</a>
+        <div class="col-lg col-md-6 col-sm-12 col">
+          <form action='{% url "search" %}' method="GET" class="search">
+            <div class="input-group w-100">
+              <input type="text" class="form-control" style="width: 60%" placeholder="Search" name="keyword" />
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
+          <div class="d-flex justify-content-end mb-3 mb-lg-0">
+            {% if user.id is  None %}
+            <div class="widget-header">
+              <small class="title text-muted">Welcome guest!</small>
+              <div>
+                <a href="{% url 'login' %}">Sign in</a>
+                <span class="dark-transp"> | </span>
+                <a href="{% url 'register' %}"> Register</a>
+              </div>
+            </div>
+            {% else %}
+            <div class="widget-header">
+              <small class="title text-muted">Welcome : {{user.first_name}}&nbsp;{{user.last_name}}</small>
+              <div>
+                <a href='{% url "dashboard" %}'>Dashboard</a>
+                <span class="dark-transp"> | </span>
+                <a href="{% url 'logout' %}"> Logout</a>
+              </div>
+            </div>
+            {% endif %}
+            <a href="{% url 'cart' %}" class="widget-header pl-3 ml-3">
+              <div class="icon icon-sm rounded-circle border">
+                <i class="fa fa-shopping-cart"></i>
+              </div>
+              <span class="badge badge-pill badge-danger notify">{{cart_count}}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</header>
+
+<!-- Your body content -->
+
+<!-- Include jQuery library -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- JavaScript for toggling dark mode -->
+<script>
+  $(document).ready(function() {
+    // Function to toggle dark mode
+    function toggleDarkMode() {
+      $('body').toggleClass('dark-mode');
+    }
+
+    // Event handler for clicking on the moon icon
+    $('#moon-icon').click(function() {
+      toggleDarkMode();
+      $('#moon-icon').hide();
+      $('#sun-icon').show();
+    });
+
+    // Event handler for clicking on the sun icon
+    $('#sun-icon').click(function() {
+      toggleDarkMode();
+      $('#sun-icon').hide();
+      $('#moon-icon').show();
+    });
+  });
+</script>
+
+
+</body>
+</html>

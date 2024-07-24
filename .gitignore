@@ -1,0 +1,85 @@
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.log
+
+# Django stuff:
+*.log
+*.pot
+*.py[cod]
+*.sqlite3
+db.sqlite3
+
+# Environment and virtual environment
+.env
+venv/
+env/
+.env/
+.venv/
+*.env
+
+# VS Code settings
+.vscode/
+
+# IDEs and editors
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.sublime-project
+*.sublime-workspace
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# PyCharm project settings
+.idea/
+
+# Coverage reports
+.coverage
+coverage.xml
+*.cover
+*.py,cover
+
+# Migrations
+*/migrations/*
+!*/migrations/__init__.py
+
+# Static and media files
+/static/
+media/
+
+# Backup and temp files
+*~ 
+*.bak
+*.tmp
+*.swp
+
+# Secrets and configuration files
+settings.py
+*.pem
+*.key
+*.crt
+
+# Local environment settings
+local_settings.py
+
+# Testing and build artifacts
+nosetests.xml
+*.cover
+*.py,cover
+
+# Pipenv
+Pipfile.lock
+
+# Other
+*.DS_Store
+*.log
+*.pot
+*.py[cod]

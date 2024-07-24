@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Page</title>
+    <link rel="stylesheet" href="{% static "css/contact.css" %}">
+</head>
+<body>
+    <section id="contacts">
+        <h5 style="text-align: center; margin: 10px;">Get In Touch</h5>
+        <h2 style="text-align: center; margin-bottom: 20px;">Contact Me</h2>
+
+        <div class="container contact__container" class="form-control">
+            <div class="contact__options">
+                <article class="contact__option">
+                    <span class="conatct__option-icon">&#x2709;</span>
+                    <h4>Email</h4>
+                    <h5>nishantkumarfps@gmail.com</h5>
+                    <a href="mailto:nishantkumarfps123@gmail.com" target="_blank" rel="noreferrer">Send a message</a>
+                </article>
+
+                <article class="contact__option">
+                    <span class="conatct__option-icon">&#x1F4E9;</span>
+                    <h4>Messenger</h4>
+                    <h5>Nishant Kumar</h5>
+                    <a href="https://m.me/nishantkumar.nishant.12764" target="_blank" rel="noreferrer">Send a message</a>
+                </article>
+
+                <article class="contact__option">
+                    <span class="conatct__option-icon">&#x1F4F1;</span>
+                    <h4>WhatsApp</h4>
+                    <h5>+91-9122992931</h5>
+                    <a href="https://api.whatsapp.com/send?phone=9122992931" target="_blank" rel="noreferrer">Send a message</a>
+                </article>
+            </div>
+            <form method="post" action=".">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit" class="btn btn-primary mb-4">Submit</button>
+        </form>
+        </div>
+    </section>
+    
+</body>
+</html>
+
+
+{% endblock content %}
+
+
