@@ -1,85 +1,73 @@
-# Python bytecode
-__pycache__/
+# Python bytecode files
 *.pyc
 *.pyo
-*.pyd
-*.pdb
-*.log
+__pycache__/
 
-# Django stuff:
-*.log
-*.pot
-*.py[cod]
-*.sqlite3
-db.sqlite3
-
-# Environment and virtual environment
-.env
-venv/
+# Virtual environment directories
 env/
-.env/
+venv/
+ENV/
+VENV/
 .venv/
-*.env
+.ENV/
+env.bak/
+venv.bak/
 
-# VS Code settings
+
+
+
+# Database files
+*.sqlite3
+
+# Secrets
+*.pem
+
+# Django migration files
+*/migrations/*.py
+!*/migrations/__init__.py
+
+# VSCode settings
 .vscode/
 
-# IDEs and editors
-.idea/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-*.sublime-project
-*.sublime-workspace
-
-# OS-specific files
+# MacOS system files
 .DS_Store
-Thumbs.db
 
-# PyCharm project settings
+# PyCharm settings
 .idea/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Log files
+*.log
 
 # Coverage reports
+htmlcov/
 .coverage
+.tox/
+.nox/
+.cache/
+nosetests.xml
 coverage.xml
 *.cover
 *.py,cover
 
-# Migrations
-*/migrations/*
-!*/migrations/__init__.py
+# MyPy
+.mypy_cache/
+.dmypy.json
+.pyre/
 
-# Static and media files
-/static/
-media/
+# Bandit
+bandit.yaml
 
-# Backup and temp files
-*~ 
-*.bak
-*.tmp
-*.swp
+# Sphinx documentation
+docs/_build/
 
-# Secrets and configuration files
-settings.py
-*.pem
-*.key
-*.crt
+# Pyre type check reports
+.pyre/
 
-# Local environment settings
-local_settings.py
+# Celery beat schedule file
+celerybeat-schedule
 
-# Testing and build artifacts
-nosetests.xml
-*.cover
-*.py,cover
-
-# Pipenv
-Pipfile.lock
-
-# Other
-*.DS_Store
-*.log
-*.pot
-*.py[cod]
+# Pycharm
+.idea/
