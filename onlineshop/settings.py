@@ -2,7 +2,7 @@
 from pathlib import Path
 import os
 import environ
-# import dj_database_url
+import dj_database_url
 env=environ.Env(
     DEBUG=(bool,False)
 )
@@ -71,20 +71,24 @@ WSGI_APPLICATION = 'onlineshop.wsgi.application'
 AUTH_USER_MODEL='account.Account'
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'JkIHZnHkAoqwyNpVoeCjxGkvBzGXxAQy',
+        'HOST': 'autorack.proxy.rlwy.net',  # Use the public host instead of the internal one
+        'PORT': '31788',  # Use the public port provided in the public URL
     }
 }
 
-# DATABASES = {
-#     'default': dj_database_url.parse(
-#         os.environ.get("DATABASE_URL", ""),
-#         conn_max_age=600,  # Sets the maximum connection age for performance
-#         ssl_require=True   # Enforces SSL for security; adjust based on your needs
-#     )
-# }
 
 
 AUTH_PASSWORD_VALIDATORS = [
