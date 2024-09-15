@@ -22,7 +22,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
-    'google_translate',
+    # 'google_translate',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
